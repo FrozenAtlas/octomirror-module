@@ -61,6 +61,7 @@ To use this module, add it to the modules array in the `config/config.js` file:
 | `maxStreamHeight` | *Optional* Maximum height for stream display in pixels. If set to 0, the stream's actual height is used<br>*Default:* `0` (stream's height)
 | `streamUrl` | *Optional* Set a custom url for accessing the MJPEG camera stream. By default it uses: `url:8080/?action=stream`.
 | `showTemps` | *Optional* Whether or not so show temperature info<br>*Default:* `true`
+| `showDetails` | *Optional* Shows details such as: File name, Elapsed time, Remaining time, and Print percentage. <br> *Default:* `true`. Set to `false` to hide the details.
 | `showDetailsWhenOffline` | *Optional* Whether or not to hide the printer details when the printer is offline (file name, time, temps)
 | `interactive` | *Optional* Allow interactive control of the printer: choose files to print and upload new files. <br> *Default:* `true`. Set to `false` to hide the drop downs, if you don't use the Mirror to control anything.
 | `debugMode` | *Optional* Prints all messages received from the printer socket to the console log, for debugging only and developing more features.
