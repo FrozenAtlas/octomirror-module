@@ -17,6 +17,7 @@ Module.register("octomirror-module", {
         maxStreamWidth: 0,
         maxStreamHeight: 0,
         showTemps: true,
+        showDetails: true,
         showDetailsWhenOffline: true,
         interactive: true, // Set to false to hide the file drop down and only show the stream.
         debugMode: false, // Set to true to log all messages from OctoPrint Socket
@@ -76,7 +77,8 @@ Module.register("octomirror-module", {
         } else {
             infoWrapper.innerHTML = `<span id="opPrinterName" class="title bright">${this.config.printerName}</span><br />`;
         }
-        infoWrapper.innerHTML += `<span>${this.translate("STATE")}: </span><span id="opStateIcon"></span> <span id="opState" class="title bright"> </span>
+        if (this.config.showDetails) {
+            infoWrapper.innerHTML += `<span>${this.translate("STATE")}: </span><span id="opStateIcon"></span> <span id="opState" class="title bright"> </span>
                 <br />
                 <div id="opMoreInfo">
                 <span>${this.translate("FILE")}: </span><span id="opFile" class="title bright">N/A</span>
@@ -85,6 +87,7 @@ Module.register("octomirror-module", {
                 <span> | ${this.translate("REMAINING")}: </span><span id="opPrintTimeRemaining" class="title bright">N/A</span>
                 <span> | ${this.translate("PERCENT")}: </span><span id="opPercent" class="title bright">N/A</span>
                 <br />`;
+        }
 
         if (this.config.showTemps) {
             infoWrapper.innerHTML += `
@@ -227,7 +230,7 @@ Module.register("octomirror-module", {
         {
             $("#opState")[0].textContent = data.state.text;
         }
-        
+
         var icon = $("#opStateIcon")[0];
         if (data.state.flags.printing) {
             icon.innerHTML = `<i class="fa fa-print" aria-hidden="true" style="color:green;"></i>`;
